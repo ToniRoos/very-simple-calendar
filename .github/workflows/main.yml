@@ -6,9 +6,9 @@ name: Node.js CI
 # events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,26 +20,26 @@ jobs:
     strategy:
       matrix:
         os: [macOS-latest, ubuntu-latest]
-       # node-version: [12.x]
-         node-version: [10.x, 12.x, 14.x]
+        # node-version: [12.x]
+        node-version: [10.x, 12.x, 14.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    #- run: npm test
-      
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: dist
-        path: |
-          out/**/*.zip
-      
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+        #- run: npm test
+
+        # - name: Archive production artifacts
+        #   uses: actions/upload-artifact@v2
+        #   with:
+        #     name: dist
+        #     path: |
+        #       out/**/*.zip
+
+        env:
+          CI: true

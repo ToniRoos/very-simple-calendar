@@ -1,0 +1,84 @@
+{
+  "name": "very-simple-calendar",
+  "version": "1.0.0",
+  "description": "Should be a very simple react based calendar to show occupied states",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "npm i && npm audit fix",
+    "build": "webpack --config webpack.prod.js",
+    "local": "node server.js localhost 8002",
+    "server": "node server.js your server"
+  },
+  "author": "Toni Roos",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "@types/bootstrap": "^5.0.16",
+    "@types/jest": "^24.0.16",
+    "@types/jquery": "^3.5.5",
+    "@types/react": "^16.14.5",
+    "@types/react-dom": "^16.9.11",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.2.2",
+    "base-64": "^0.1.0",
+    "browser-sync": "^2.26.14",
+    "chalk": "^2.4.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "filter-json-loader": "^0.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "http-proxy-middleware": "^0.19.1",
+    "jest": "^25.1.0",
+    "jest-html": "^1.5.0",
+    "jest-jenkins-reporter": "^1.0.2",
+    "jest-serializer-html": "^7.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-fetch": "^2.6.0",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^3.0.0",
+    "pretty": "^2.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-jest": "^26.5.4",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.9.9",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-middleware": "^3.7.3",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost:8000",
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "testResultsProcessor": "jest-jenkins-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "report.xml",
+    "indent": 4
+  }
+}

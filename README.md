@@ -1,3 +1,4 @@
+[![Node.js CI](https://github.com/ToniRoos/very-simple-calendar/actions/workflows/main.yml/badge.svg)](https://github.com/ToniRoos/very-simple-calendar/actions/workflows/main.yml)
 # Very simple calendar
 
 Should be a very simple react based calendar to show occupied states.

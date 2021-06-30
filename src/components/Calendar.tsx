@@ -1,36 +1,19 @@
 import React, { useState } from "react";
-import { isDateInRange, isInRange } from "../logic/helper";
-import { CalendarItemData, CalendarRowData, CalendarData, CalendarHeaderData } from "../types";
+import { isDateInRange } from "../logic/helper";
+import { CalendarDayProps, CalendarData, CalendarHeaderData, CalendarDayPropsExtension } from "../types";
 
 import '../scss/styles.scss';
-
-export const CalendarDay = (props: CalendarItemData) => {
-
-    const className = props.active ? 'calendar calendar-item calendar-item-active' : 'calendar calendar-item calendar-item-inactive';
-    const classNameBrushed = props.occupiedState.className;
-    return <td title={props.occupiedState.tooltip}>
-        <div className={`${className} ${classNameBrushed}`}>
-            {props.day.getDate()}
-        </div>
-    </td>;
-}
-
-export const CalendarWeek = (props: CalendarRowData) => {
-
-    return <tr>
-        {props.row.map(item => <CalendarDay key={item.day.getTime()} {...item} />)}
-    </tr>;
-}
+import { CalendarWeek } from "./CalendarWeek";
 
 export const CalendarHeader = (props: CalendarHeaderData) => {
 
-    // const headerData = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
     const headerData = props.weekDayNames ? props.weekDayNames : defaultWeekDayNames();
     const header = headerData.map(item => <td key={item} className='calendar-header'>{item}</td>);
 
     return <thead><tr>{header}</tr></thead>;
 }
 
+const dayInMilliSeconds = 1000 * 60 * 60 * 24;
 export const CalendarItem = (props: CalendarData) => {
 
     var monthNames = props.monthNames ? props.monthNames : defaultMonthNames();
@@ -42,24 +25,22 @@ export const CalendarItem = (props: CalendarData) => {
     const firstDayOfMonth = new Date(year, month, 1, 12);
     let dayOfWeek = firstDayOfMonth.getDay() == 0 ? 6 : firstDayOfMonth.getDay() - 1;
 
-    let calDays: Array<CalendarItemData> = [];
+    let calDays: Array<CalendarDayProps> = [];
     const numberCalCells = 42;
     let weeks: JSX.Element[] = [];
 
     const startOffset = -dayOfWeek;
-    const dayInMilliSeconds = 1000 * 60 * 60 * 24;
 
     for (let i = 0; i < numberCalCells; i++) {
 
         const tmpDate = new Date(firstDayOfMonth.getTime() + ((i + startOffset) * dayInMilliSeconds));
-        const occupiedCountsPerDay = props.events.map(y => isDateInRange(y, new Date(year, month, i - dayOfWeek + 1))).reduce((a, b) => (a ? 1 : 0) + (b ? 1 : 0), 0);
+        const eventsOfDay = props.events.filter(event => isDateInRange(event, tmpDate));
 
-        const filteredStates = props.occupiedStates.filter(item => isInRange(item.range, occupiedCountsPerDay));
-        const occupiedStateItem = filteredStates.length === 0 ? props.occupiedStates[occupiedCountsPerDay] : filteredStates[0];
-        let calItem: CalendarItemData = {
+        let calItem: CalendarDayProps = {
             day: tmpDate,
-            active: tmpDate.getMonth() === props.startDate.getMonth(),
-            occupiedState: occupiedStateItem
+            eventsOfDay: eventsOfDay,
+            eventConditions: props.eventConditions,
+            active: tmpDate.getMonth() === props.startDate.getMonth()
         };
 
         calDays.push(calItem);

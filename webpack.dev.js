@@ -1,7 +1,15 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
 
 const basepath = "/";
+
+const htmlPlugin = new HtmlWebPackPlugin({
+    template: "./src/index.html",
+    filename: "./index.html",
+    // favicon: "./src/images/favicon.ico"
+});
 
 module.exports = merge(common, {
 
@@ -27,5 +35,8 @@ module.exports = merge(common, {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        htmlPlugin
+    ]
 });

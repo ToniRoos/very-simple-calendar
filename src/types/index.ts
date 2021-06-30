@@ -10,7 +10,7 @@ export interface CalendarEvent extends DateRange {
 export interface CalendarData extends CalendarHeaderData {
     startDate?: Date;
     events: CalendarEvent[];
-    occupiedStates: OccupiedStateItem[];
+    eventConditions?: EventConditionItem[];
     monthNames?: string[];
     numberCalendarsToShow?: number;
 }
@@ -20,16 +20,20 @@ export interface NumberRange {
     end: number;
 }
 
-export interface OccupiedStateItem {
-    range: NumberRange;
-    tooltip?: string;
+export interface CalendarDayPropsExtension {
+    description?: string;
     className: string;
 }
 
-export interface CalendarItemData {
+export interface EventConditionItem extends CalendarDayPropsExtension {
+    range: NumberRange;
+}
+
+export interface CalendarDayProps {
     day: Date;
     active: boolean;
-    occupiedState: OccupiedStateItem;
+    eventsOfDay: CalendarEvent[];
+    eventConditions?: EventConditionItem[];
 }
 
 export interface CalendarHeaderData {
@@ -37,5 +41,5 @@ export interface CalendarHeaderData {
 }
 
 export interface CalendarRowData {
-    row: CalendarItemData[];
+    row: CalendarDayProps[];
 }

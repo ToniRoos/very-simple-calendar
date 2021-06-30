@@ -1,12 +1,3 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
-
-const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
-    filename: "./index.html",
-    // favicon: "./src/images/favicon.ico"
-});
 
 module.exports = {
 
@@ -59,11 +50,5 @@ module.exports = {
                 }]
             },
         ]
-    },
-    plugins: [
-        htmlPlugin,
-        new CopyWebpackPlugin([
-            { from: './src/i18n', to: './i18n' }
-        ])
-    ]
+    }
 };

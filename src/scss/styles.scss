@@ -1,6 +1,7 @@
 // @import "~bootstrap/scss/bootstrap";
 // Write your custom styles here
 
+@import './colors';
 @import './calendar';
 
 .events-0 {
@@ -8,11 +9,16 @@
 }
 
 .events-1 {
-    background-color: $color-active;
-    color: darkcyan !important;
+    background-color: $color-primary !important;
+    color: $color-secondary !important;
 }
 
 .events-2 {
-    background-color: lightcoral;
-    color: white !important;
+    background-color: lightcoral !important;
+    color: $color-white !important;
+}
+
+.example-seperator {
+    border-bottom: dotted 2px $color-primary;
+    padding-bottom: 50px;
 }

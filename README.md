@@ -18,13 +18,15 @@ Webpack will be used for compiling and bundling the source code.
 For a local production build, call the following command and the sources will be compiled to the "dist"-folder.
 
 ```sh
-    npm run build
+npm run build
 ```
 
 ### 1.2 Development build
 
-For a development build, call the following command and the sources will be compiled with a development server.
+For a development build, call the following command and the sources will be compiled with a local development server.
 
 ```sh
-// uses local development server
 npm run local
+```
+
+## API

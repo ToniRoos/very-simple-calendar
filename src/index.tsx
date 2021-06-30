@@ -1,22 +1,21 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-// import "bootstrap";
-
 import { Calendar } from "./components/Calendar";
-import { DateRange, OccupiedStateItem } from "./types";
+import { CalendarEvent, OccupiedStateItem as OccupiedDataItem } from "./types";
 
-function GetCalendarDates(): DateRange[] {
+function GetCalendarDates(): CalendarEvent[] {
     return [
         { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-11") },
         { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-07") },
-        { startDate: new Date("2021-11-07"), endDate: new Date("2021-11-14") }
+        { startDate: new Date("2021-11-07"), endDate: new Date("2021-11-14") },
+        { startDate: new Date("2021-06-30"), description: "Private" }
     ]
 };
 
-let dates: DateRange[] = GetCalendarDates();
+let dates: CalendarEvent[] = GetCalendarDates();
 
-const occupiedStates: OccupiedStateItem[] = [
+const occupiedStates: OccupiedDataItem[] = [
     {
         range: { start: 0, end: 0 },
         className: "events-0",
@@ -34,6 +33,6 @@ const occupiedStates: OccupiedStateItem[] = [
     }];
 
 ReactDOM.render(
-    <Calendar datesOccupied={dates} startDate={new Date()} occupiedStates={occupiedStates} numberCalendarsToShow={2} />,
+    <Calendar events={dates} occupiedStates={occupiedStates} numberCalendarsToShow={2} />,
     document.getElementById("root")
 );

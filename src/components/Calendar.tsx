@@ -52,7 +52,7 @@ export const CalendarItem = (props: CalendarData) => {
     for (let i = 0; i < numberCalCells; i++) {
 
         const tmpDate = new Date(firstDayOfMonth.getTime() + ((i + startOffset) * dayInMilliSeconds));
-        const occupiedCountsPerDay = props.datesOccupied.map(y => isDateInRange(y, new Date(year, month, i - dayOfWeek + 1))).reduce((a, b) => (a ? 1 : 0) + (b ? 1 : 0), 0);
+        const occupiedCountsPerDay = props.events.map(y => isDateInRange(y, new Date(year, month, i - dayOfWeek + 1))).reduce((a, b) => (a ? 1 : 0) + (b ? 1 : 0), 0);
 
         const filteredStates = props.occupiedStates.filter(item => isInRange(item.range, occupiedCountsPerDay));
         const occupiedStateItem = filteredStates.length === 0 ? props.occupiedStates[occupiedCountsPerDay] : filteredStates[0];
@@ -83,7 +83,7 @@ export const CalendarItem = (props: CalendarData) => {
 
 export const Calendar = (props: CalendarData) => {
 
-    const [calendarState, setCalendarState] = useState({ dateToDisplay: props.startDate });
+    const [calendarState, setCalendarState] = useState({ dateToDisplay: props.startDate ? props.startDate : new Date() });
     const numberCalendarsToShow = props.numberCalendarsToShow ? props.numberCalendarsToShow : 1;
 
     const calendarItems: JSX.Element[] = [];

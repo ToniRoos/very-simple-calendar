@@ -1,11 +1,15 @@
 export interface DateRange {
     startDate: Date;
-    endDate: Date;
+    endDate?: Date;
+}
+
+export interface CalendarEvent extends DateRange {
+    description?: string;
 }
 
 export interface CalendarData extends CalendarHeaderData {
-    startDate: Date;
-    datesOccupied: DateRange[];
+    startDate?: Date;
+    events: CalendarEvent[];
     occupiedStates: OccupiedStateItem[];
     monthNames?: string[];
     numberCalendarsToShow?: number;

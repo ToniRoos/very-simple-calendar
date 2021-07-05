@@ -33,13 +33,6 @@ const eventConditions: EventConditionItem[] = [
 
 export const App = () => {
 
-    const renderCalendarDayEvents = ((data: CalendarDayData) => {
-
-        let descriptionList = data.eventsOfDay.filter(event => event.description).map(event => event.description);
-        const descriptionListMapped = descriptionList.map((des, index) => <div key={data.day.getTime() + index} className="calendar-event ">{des}</div>);
-        return descriptionListMapped;
-    });
-
     return <div>
         <h1>Very simple example 1 - small calendar</h1>
         <Calendar events={events} />

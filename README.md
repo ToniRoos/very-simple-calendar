@@ -73,7 +73,7 @@ export const App = () => {
 ```
 
 
-```startDate?```: default today, example: new Date(2021, 0, 5)
+```startDate?```: ```Date``` (default: today | example: new Date(2021, 0, 5))
 
 ```events```: ```CalendarEvent[]``` (list of calendar events  to show)<br>
  - ```CalendarEvent```: (used to describe an event)

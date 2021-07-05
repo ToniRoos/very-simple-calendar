@@ -15,6 +15,7 @@ export interface CalendarData extends CalendarHeaderData {
     options?: CalendarDataOptions;
 }
 export const enum CalendarType {
+    small,
     big
 }
 

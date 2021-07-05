@@ -6,8 +6,7 @@
   "scripts": {
     "start": "npm i && npm audit fix",
     "build": "webpack --config webpack.prod.js",
-    "local": "node server.js localhost 8002",
-    "server": "node server.js your server"
+    "build:examples": "node server.js localhost 8002"
   },
   "author": "Toni Roos",
   "license": "ISC",

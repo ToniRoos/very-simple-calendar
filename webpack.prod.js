@@ -7,7 +7,7 @@ module.exports = merge(common, {
 
     mode: "production",
     devtool: "source-map",
-    entry: ["./src/calendar.tsx"],
+    entry: ["./src/Calendar.tsx"],
     output: {
         publicPath: './'
     },

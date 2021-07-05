@@ -14,11 +14,15 @@ export interface CalendarData extends CalendarHeaderData {
     eventConditions?: EventConditionItem[];
     options?: CalendarDataOptions;
 }
+export const enum CalendarType {
+    big
+}
 
 export interface CalendarDataOptions extends CalendarDayContent {
     monthNames?: string[];
     weekDayNames?: string[];
     numberCalendarsToShow?: number;
+    type?: CalendarType;
 }
 
 export interface NumberRange {

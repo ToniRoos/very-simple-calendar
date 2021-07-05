@@ -1,21 +1,17 @@
 import React from "react";
 
 import { Calendar } from "../src/Calendar";
-import { CalendarDayData, CalendarEvent, EventConditionItem } from "../src/types";
+import { CalendarDayData, CalendarEvent, CalendarType, EventConditionItem } from "../src/types";
 
 import './scss/examples.scss';
 
-function GetCalendarDates(): CalendarEvent[] {
-    return [
-        { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-11") },
-        { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-07") },
-        { startDate: new Date("2021-11-07"), endDate: new Date("2021-11-14") },
-        { startDate: new Date("2021-06-30"), description: "Private" },
-        { startDate: new Date("2021-06-30"), description: "Private 2" }
-    ]
-};
-
-let events: CalendarEvent[] = GetCalendarDates();
+let events: CalendarEvent[] = [
+    { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-11") },
+    { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-07") },
+    { startDate: new Date("2021-11-07"), endDate: new Date("2021-11-14") },
+    { startDate: new Date("2021-06-30"), description: "Private" },
+    { startDate: new Date("2021-06-30"), description: "Private 2" }
+];
 
 const eventConditions: EventConditionItem[] = [
     {
@@ -56,10 +52,8 @@ export const App = () => {
         <div className="example-seperator" />
 
         <h1>Very simple example 3 - big calendar</h1>
-        <div className="calendar-big">
-            <Calendar events={events} options={{
-                calendarDayContent: renderCalendarDayEvents
-            }} />
-        </div>
+        <Calendar events={events} options={{
+            type: CalendarType.big
+        }} />
     </div>
 }

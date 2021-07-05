@@ -6,10 +6,10 @@
   "scripts": {
     "start": "npm i && npm audit fix",
     "build": "webpack --config webpack.prod.js",
-    "build:examples": "node server.js localhost 8002"
+    "examples": "node server.js localhost 8002"
   },
   "author": "Toni Roos",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.9",

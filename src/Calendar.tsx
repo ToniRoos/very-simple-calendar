@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { isDateInRange } from "./logic/helper";
-import { CalendarDayProps, CalendarData, CalendarHeaderData } from "./types";
+import { CalendarDayProps, CalendarData, CalendarHeaderData, CalendarType } from "./types";
 
 import './scss/styles.scss';
 import { CalendarWeek } from "./components/CalendarWeek";
+import { EventlistFormatter } from "./formatter/EventlistFormatter";
 
 export const CalendarHeader = (props: CalendarHeaderData) => {
 
@@ -68,10 +69,18 @@ export const Calendar = (props: CalendarData) => {
     const [calendarState, setCalendarState] = useState({ dateToDisplay: props.startDate ? props.startDate : new Date() });
     const numberCalendarsToShow = props.options?.numberCalendarsToShow ? props.options.numberCalendarsToShow : 1;
 
+    const useBigCalendar = props.options?.type === CalendarType.big;
+    const classCalendarType = useBigCalendar ? "calendar-big" : "";
+
+    const options = { ...props.options };
+    if (useBigCalendar && !props.options?.calendarDayContent) {
+        options.calendarDayContent = EventlistFormatter;
+    }
+
     const calendarItems: JSX.Element[] = [];
     for (let index = 0; index < numberCalendarsToShow; index++) {
         const startDate = new Date(calendarState.dateToDisplay.getFullYear(), calendarState.dateToDisplay.getMonth() + index);
-        calendarItems.push(<CalendarItem key={startDate.getTime()} {...props} startDate={startDate} />)
+        calendarItems.push(<CalendarItem key={startDate.getTime()} {...props} options={options} startDate={startDate} />)
     }
 
     return <div className="calendar-container">
@@ -85,7 +94,7 @@ export const Calendar = (props: CalendarData) => {
             <div className="calendar-left" />
         </div>
 
-        <div className="calendar-flex">
+        <div className={`${classCalendarType} calendar-flex`}>
             {calendarItems}
         </div>
 
@@ -104,4 +113,3 @@ function defaultWeekDayNames() {
 function defaultMonthNames() {
     return ["January", "February", "March", "April", "Mai", "June", "July", "August", "September", "October", "November", "December"];
 }
-

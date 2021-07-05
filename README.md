@@ -42,7 +42,7 @@ export const App = () => {
     </div>
 }
 ```
-Example for big calendar with custom content:
+Example for big calendar:
 ```tsx
 export const App = () => {
 

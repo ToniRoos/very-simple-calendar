@@ -55,9 +55,13 @@
 	background: #fff;
 	font-size: 0.95em;
 
+	td.calendar-header {
+		vertical-align: middle;
+	}
+
 	td {
-		width: 36px;
-		height: 36px !important;
+		width: 35px;
+		height: 35px;
 		text-align: center;
 		border: 0;
 		padding: 0px;
@@ -97,4 +101,24 @@
 	}
 }
 
-  
+.calendar-big .calendar-event {
+    background-color: $color-primary;
+    color: $color-secondary;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 3px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90px;
+}
+
+.calendar-big .calendar td {
+    vertical-align: top;
+    width: 120px !important;
+    height: 90px !important;
+}
+
+.calendar-big .calendar-item-busy {
+    background-color: transparent !important;
+}

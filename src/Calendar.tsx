@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { isDateInRange } from "../logic/helper";
-import { CalendarDayProps, CalendarData, CalendarHeaderData, CalendarDayPropsExtension } from "../types";
+import { isDateInRange } from "./logic/helper";
+import { CalendarDayProps, CalendarData, CalendarHeaderData, CalendarDayPropsExtension } from "./types";
 
-import '../scss/styles.scss';
-import { CalendarWeek } from "./CalendarWeek";
+import './scss/styles.scss';
+import { CalendarWeek } from "./components/CalendarWeek";
 
 export const CalendarHeader = (props: CalendarHeaderData) => {
 
@@ -16,7 +16,7 @@ export const CalendarHeader = (props: CalendarHeaderData) => {
 const dayInMilliSeconds = 1000 * 60 * 60 * 24;
 export const CalendarItem = (props: CalendarData) => {
 
-    var monthNames = props.monthNames ? props.monthNames : defaultMonthNames();
+    var monthNames = props.options?.monthNames ? props.options.monthNames : defaultMonthNames();
 
     let today = new Date(props.startDate.getTime());
     let month = today.getMonth();
@@ -40,7 +40,8 @@ export const CalendarItem = (props: CalendarData) => {
             day: tmpDate,
             eventsOfDay: eventsOfDay,
             eventConditions: props.eventConditions,
-            active: tmpDate.getMonth() === props.startDate.getMonth()
+            active: tmpDate.getMonth() === props.startDate.getMonth(),
+            calendarDayContent: props.options?.calendarDayContent
         };
 
         calDays.push(calItem);
@@ -54,7 +55,7 @@ export const CalendarItem = (props: CalendarData) => {
     return <div>
         <div className="title">{monthNames[month]} {year}</div>
         <table className="calendar">
-            <CalendarHeader />
+            <CalendarHeader weekDayNames={props.options?.weekDayNames} />
             <tbody>
                 {weeks}
             </tbody>
@@ -65,7 +66,7 @@ export const CalendarItem = (props: CalendarData) => {
 export const Calendar = (props: CalendarData) => {
 
     const [calendarState, setCalendarState] = useState({ dateToDisplay: props.startDate ? props.startDate : new Date() });
-    const numberCalendarsToShow = props.numberCalendarsToShow ? props.numberCalendarsToShow : 1;
+    const numberCalendarsToShow = props.options?.numberCalendarsToShow ? props.options.numberCalendarsToShow : 1;
 
     const calendarItems: JSX.Element[] = [];
     for (let index = 0; index < numberCalendarsToShow; index++) {

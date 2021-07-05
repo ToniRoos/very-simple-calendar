@@ -15,6 +15,7 @@ module.exports = merge(common, {
 
     mode: "development",
     devtool: "source-map",
+    entry: ["./examples/index.tsx"],
     output: {
         publicPath: `${basepath}`
     },

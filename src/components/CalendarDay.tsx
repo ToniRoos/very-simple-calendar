@@ -6,7 +6,8 @@ export const CalendarDay = (props: CalendarDayProps) => {
 
     const occupiedCountsPerDay = props.eventsOfDay.length;
 
-    let description = props.eventsOfDay.filter(event => event.description).map(event => event.description).join("\n");
+    let descriptionList = props.eventsOfDay.filter(event => event.description).map(event => event.description);
+    let description = descriptionList.join("\n");
     let classNameBrushed = "";
 
     if (props.eventConditions) {
@@ -19,12 +20,13 @@ export const CalendarDay = (props: CalendarDayProps) => {
         classNameBrushed = eventCondition.className;
     }
 
-    const className = props.active ? 'calendar calendar-item calendar-item-active' : 'calendar calendar-item calendar-item-inactive';
+    const activeClassName = props.active ? 'calendar-item-active' : 'calendar-item-inactive';
     const classNameBusy = occupiedCountsPerDay > 0 ? "calendar-item-busy" : "";
 
     return <td title={description}>
-        <div className={`${className} ${classNameBusy} ${classNameBrushed}`}>
+        <div className={`calendar calendar-item ${activeClassName} ${classNameBusy} ${classNameBrushed}`}>
             {props.day.getDate()}
+            {props.calendarDayContent ? props.calendarDayContent(props) : undefined}
         </div>
     </td>;
 };

@@ -1,32 +1,26 @@
 [![Node.js CI](https://github.com/ToniRoos/very-simple-calendar/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/ToniRoos/very-simple-calendar/actions/workflows/main.yml)
 # Very simple calendar
 
-Should be a very simple react based calendar to show occupied states.
+Should be a very simple react based calendar to show occupied states or just even events.
 
-![Preview](docu/preview.png)
+No matter if small...
+![Preview](docu/small-cal-one.png)
 
-## Todo's
- [ ] enable possibility to use custom logic to render week day style
+...or big calendar, to show occupied states or to show events, use it as you want. 
+![Preview](docu/big-cal.png)
 
+## 1. Install
 
-## 1. Build
+...
 
-Webpack will be used for compiling and bundling the source code. 
+## 2. Run examples
 
-### 1.1 Production build
-
-For a local production build, call the following command and the sources will be compiled to the "dist"-folder.
-
-```sh
-npm run build
-```
-
-### 1.2 Development build
-
-For a development build, call the following command and the sources will be compiled with a local development server.
+To run the examples on a local server, call the following commands.
 
 ```sh
-npm run local
+npm install
+npm run build:examples
 ```
 
-## API
+## 3. API
+...

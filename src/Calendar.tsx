@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { isDateInRange } from "./logic/helper";
-import { CalendarDayProps, CalendarData, CalendarHeaderData, CalendarDayPropsExtension } from "./types";
+import { CalendarDayProps, CalendarData, CalendarHeaderData } from "./types";
 
 import './scss/styles.scss';
 import { CalendarWeek } from "./components/CalendarWeek";

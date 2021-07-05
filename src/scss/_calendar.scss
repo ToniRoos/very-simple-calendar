@@ -13,7 +13,7 @@
 		color: $color-secondary;
 	}
 
-	.btn {
+	.calendar-btn {
 		align-self: center;
 	}
 
@@ -30,12 +30,12 @@
 		 }
 	}
 	
-	.arrow-left {
+	.calendar-left {
 		@extend .arrow;
 		transform: rotate(-45deg);
 	}
 	
-	.arrow-right {
+	.calendar-right {
 		@extend .arrow;
 		transform: rotate(135deg);
 	}
@@ -82,8 +82,6 @@
 	}
 
 	.calendar-item {
-		// border-radius: 18px;
-		// padding: 1px;
 		border: 0px;
 	}
 
@@ -101,28 +99,30 @@
 	}
 }
 
-.calendar-big .calendar-event {
-    background-color: $color-primary;
-    color: $color-secondary;
-    border-radius: 3px;
-    padding: 3px;
-    margin: 3px 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 90px;
-}
+.calendar-big {
+	.calendar-event {
+		background-color: $color-primary;
+		color: $color-secondary;
+		border-radius: 3px;
+		padding: 3px;
+		margin: 3px 0;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 90px;
+	}
 
-.calendar-big .calendar td {
-    vertical-align: top;
-    width: 120px !important;
-    height: 90px !important;
-}
+	.calendar td {
+		vertical-align: top;
+		width: 120px !important;
+		height: 90px !important;
+	}
 
-.calendar-big .calendar-item-busy {
-    background-color: transparent !important;
-}
+	.calendar-item-busy {
+		background-color: transparent !important;
+	}
 
-.calendar-big td.calendar-header {
-	vertical-align: middle;
+	td.calendar-header {
+		vertical-align: middle;
+	}
 }

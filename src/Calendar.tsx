@@ -75,25 +75,25 @@ export const Calendar = (props: CalendarData) => {
     }
 
     return <div className="calendar-container">
-        <div className="btn" onClick={() => {
+        <div className="calendar-btn" onClick={() => {
             const curDate = new Date();
             if (calendarState.dateToDisplay.getFullYear() > curDate.getFullYear() ||
                 (calendarState.dateToDisplay.getMonth() > curDate.getMonth() && calendarState.dateToDisplay.getFullYear() === curDate.getFullYear()))
                 setCalendarState({ dateToDisplay: new Date(calendarState.dateToDisplay.getFullYear(), calendarState.dateToDisplay.getMonth() - 1) });
         }
         }>
-            <div className="arrow-left" />
+            <div className="calendar-left" />
         </div>
 
         <div className="calendar-flex">
             {calendarItems}
         </div>
 
-        <div className="btn" onClick={() => {
+        <div className="calendar-btn" onClick={() => {
             setCalendarState({ dateToDisplay: new Date(calendarState.dateToDisplay.getFullYear(), calendarState.dateToDisplay.getMonth() + 1) });
         }
         }>
-            <div className="arrow-right" />
+            <div className="calendar-right" />
         </div>
     </div>;
 }

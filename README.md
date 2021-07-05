@@ -88,3 +88,8 @@ export const App = () => {
  - ```numberCalendarsToShow?```: ```number``` (number of pages to show)
  - ```type?```: ```CalendarType``` (small | big)
  - ```calendarDayContent?```: ```(calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[]``` (create your custom week day formatter)
+    - ```CalendarDayData```: (for current day while rendering)
+        - ```day```: ```Date```
+        - ```active```: ```boolean``` (is true, when month is displayed at the moment)
+        - ```eventsOfDay```: ```CalendarEvent[]``` (list of events for current date)
+        - ```eventConditions```?:``` EventConditionItem[]``` (passed event conditions to use for formatting cell for display different states of event frequency)

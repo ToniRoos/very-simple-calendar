@@ -61,8 +61,9 @@ export const App = () => {
     </div>
 }
 ```
-
+------
 ## API
+
 ```tsx
 export const App = () => {
 
@@ -72,6 +73,7 @@ export const App = () => {
 }
 ```
 
+### Basic API
 
 ```startDate?```: ```Date``` (default: today | example: new Date(2021, 0, 5))
 
@@ -87,9 +89,13 @@ export const App = () => {
  - ```weekDayNames?```: ```string[]``` (default: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
  - ```numberCalendarsToShow?```: ```number``` (number of pages to show)
  - ```type?```: ```CalendarType``` (small | big)
- - ```calendarDayContent?```: ```(calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[]``` (create your custom week day formatter)
+
+### Advanced API
+
+```options?```: ```CalendarDataOptions``` (display options)
+ - ```calendarDayContent?```: ```(calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[]``` (create your custom week day content)
     - ```CalendarDayData```: (for current day while rendering)
         - ```day```: ```Date```
         - ```active```: ```boolean``` (is true, when month is displayed at the moment)
         - ```eventsOfDay```: ```CalendarEvent[]``` (list of events for current date)
-        - ```eventConditions```?:``` EventConditionItem[]``` (passed event conditions to use for formatting cell for display different states of event frequency)
+        - ```eventConditions```?:``` EventConditionItem[]``` (event conditions can be used for formatting week day cells, depending on the number of events per day)

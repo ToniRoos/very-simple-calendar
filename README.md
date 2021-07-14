@@ -85,8 +85,9 @@ export const App = () => {
     - ```id?```: ```string``` (can be used to identify events, for example to group events)
 
 ```options?```: ```CalendarDataOptions``` (display options)
- - ```monthNames?```: ```string[]``` (default: ["January", "February", "March", "April", "Mai", "June", "July", "August", "September", "October", "November", "December"])
+ - ```monthNames?```: ```string[]``` (default: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
  - ```weekDayNames?```: ```string[]``` (default: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+ - ```shiftWeekStartDay?```: ```number``` (default: 0 => means starting week on monday, use -1 to start week on sunday)
  - ```numberCalendarsToShow?```: ```number``` (number of pages to show)
  - ```type?```: ```CalendarType``` (small | big)
 

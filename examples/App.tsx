@@ -46,6 +46,7 @@ export const App = () => {
 
         <h1>Very simple example 3 - big calendar</h1>
         <Calendar events={events} options={{
+            shiftWeekStartDay: -1,
             type: CalendarType.big
         }} />
     </div>

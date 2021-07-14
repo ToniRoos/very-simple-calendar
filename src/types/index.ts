@@ -8,7 +8,7 @@ export interface CalendarEvent extends DateRange {
     id?: string;
 }
 
-export interface CalendarData extends CalendarHeaderData {
+export interface CalendarData {
     startDate?: Date;
     events: CalendarEvent[];
     eventConditions?: EventConditionItem[];
@@ -19,9 +19,8 @@ export const enum CalendarType {
     big
 }
 
-export interface CalendarDataOptions extends CalendarDayContent {
+export interface CalendarDataOptions extends CalendarDayContent, CalendarHeaderData {
     monthNames?: string[];
-    weekDayNames?: string[];
     numberCalendarsToShow?: number;
     type?: CalendarType;
 }
@@ -57,6 +56,7 @@ export interface CalendarDayData extends Omit<CalendarDayProps, "calendarDayCont
 
 export interface CalendarHeaderData {
     weekDayNames?: string[];
+    shiftWeekStartDay?: number;
 }
 
 export interface CalendarRowData {

@@ -9,14 +9,17 @@ module.exports = merge(common, {
     devtool: "source-map",
     entry: ["./src/Calendar.tsx"],
     output: {
-        publicPath: './'
+        publicPath: './',
+        filename: "index.js",    // generated bundle file with hash in name, name will automaitcally included in index.html
+        path: __dirname + "/dist",
+        libraryTarget: 'umd'
     },
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // all options are optional
-            filename: '[name].[contenthash:8].css',
+            filename: '[name].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
     ],
@@ -48,6 +51,15 @@ module.exports = merge(common, {
                     chunks: 'all'
                 }
             }
+        }
+    },
+    externals: {
+        react: {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react',
+            umd: 'react',
         }
     }
 });

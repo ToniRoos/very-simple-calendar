@@ -6,7 +6,7 @@ const path = require('path');
 const basepath = "/";
 
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
+    template: "./examples/index.html",
     filename: "./index.html",
     // favicon: "./src/images/favicon.ico"
 });

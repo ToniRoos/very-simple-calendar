@@ -9,6 +9,12 @@ import { EventlistFormatter } from "./formatter/EventlistFormatter";
 export const CalendarHeader = (props: CalendarHeaderData) => {
 
     const headerData = props.weekDayNames ? props.weekDayNames : defaultWeekDayNames();
+
+    for (let index = 0; index <= props.shiftWeekStartDay; index++) {
+        const firstWeekDayName = headerData.shift();
+        headerData.push(firstWeekDayName);
+    }
+
     const header = headerData.map(item => <td key={item} className='calendar-header'>{item}</td>);
 
     return <thead><tr>{header}</tr></thead>;
@@ -19,7 +25,8 @@ export const CalendarItem = (props: CalendarData) => {
 
     var monthNames = props.options?.monthNames ? props.options.monthNames : defaultMonthNames();
 
-    let today = new Date(props.startDate.getTime());
+    const startDate = props.startDate ? props.startDate : new Date();
+    let today = new Date(startDate.getTime());
     let month = today.getMonth();
     let year = today.getFullYear();
 
@@ -30,7 +37,8 @@ export const CalendarItem = (props: CalendarData) => {
     const numberCalCells = 42;
     let weeks: JSX.Element[] = [];
 
-    const startOffset = -dayOfWeek;
+    const shiftWeekDaysNumber = props.options?.shiftWeekStartDay ? props.options.shiftWeekStartDay : 0;
+    const startOffset = -dayOfWeek + shiftWeekDaysNumber;
 
     for (let i = 0; i < numberCalCells; i++) {
 
@@ -41,7 +49,7 @@ export const CalendarItem = (props: CalendarData) => {
             day: tmpDate,
             eventsOfDay: eventsOfDay,
             eventConditions: props.eventConditions,
-            active: tmpDate.getMonth() === props.startDate.getMonth(),
+            active: tmpDate.getMonth() === startDate.getMonth(),
             calendarDayContent: props.options?.calendarDayContent
         };
 
@@ -56,7 +64,7 @@ export const CalendarItem = (props: CalendarData) => {
     return <div>
         <div className="title">{monthNames[month]} {year}</div>
         <table className="calendar">
-            <CalendarHeader weekDayNames={props.options?.weekDayNames} />
+            <CalendarHeader weekDayNames={props.options?.weekDayNames} shiftWeekStartDay={shiftWeekDaysNumber} />
             <tbody>
                 {weeks}
             </tbody>
@@ -107,9 +115,9 @@ export const Calendar = (props: CalendarData) => {
     </div>;
 }
 function defaultWeekDayNames() {
-    return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 }
 
 function defaultMonthNames() {
-    return ["January", "February", "March", "April", "Mai", "June", "July", "August", "September", "October", "November", "December"];
+    return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 }

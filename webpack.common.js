@@ -1,8 +1,10 @@
 
+const path = require('path');
+
 module.exports = {
 
     output: {
-        filename: "[name].[contenthash:8].bundle.js",    // generated bundle file with hash in name, name will automaitcally included in index.html
+        filename: "[name].bundle.js",    // generated bundle file with hash in name, name will automaitcally included in index.html
         path: __dirname + "/dist"
     },
 

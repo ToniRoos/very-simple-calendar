@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Should be a very simple react based calendar to show occupied states",
   "main": "dist/index.js",
-  "types": "dist/src/Calendar.d.ts",
+  "types": "dist/Calendar.d.ts",
   "files": [
     "dist/**"
   ],

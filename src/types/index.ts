@@ -1,3 +1,5 @@
+import { CalendarDayContent, CalendarDayProps } from "../CalendarDay/CalendarDay";
+import { CalendarHeaderData } from "../CalendarHeader";
 export interface DateRange {
     startDate: Date;
     endDate?: Date;
@@ -8,18 +10,15 @@ export interface CalendarEvent extends DateRange {
     id?: string;
 }
 
-export interface CalendarData {
-    startDate?: Date;
-    events: CalendarEvent[];
-    eventConditions?: EventConditionItem[];
-    options?: CalendarDataOptions;
-}
+
 export const enum CalendarType {
     small,
     big
 }
 
 export interface CalendarDataOptions extends CalendarDayContent, CalendarHeaderData {
+    shiftWeekStartDay?: number;
+    weekDayNames?: string[];
     monthNames?: string[];
     numberCalendarsToShow?: number;
     type?: CalendarType;
@@ -37,28 +36,4 @@ export interface CalendarDayPropsExtension {
 
 export interface EventConditionItem extends CalendarDayPropsExtension {
     range: NumberRange;
-}
-
-export interface CalendarDayProps extends CalendarDayContent {
-    day: Date;
-    active: boolean;
-    eventsOfDay: CalendarEvent[];
-    eventConditions?: EventConditionItem[];
-}
-
-export interface CalendarDayContent {
-    calendarDayContent?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
-}
-
-export interface CalendarDayData extends Omit<CalendarDayProps, "calendarDayContent"> {
-
-}
-
-export interface CalendarHeaderData {
-    weekDayNames?: string[];
-    shiftWeekStartDay?: number;
-}
-
-export interface CalendarRowData {
-    row: CalendarDayProps[];
 }

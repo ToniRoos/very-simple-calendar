@@ -1,16 +1,16 @@
 import React from "react";
 
 import { Calendar } from "../src/Calendar";
-import { CalendarDayData, CalendarEvent, CalendarType, EventConditionItem } from "../src/types";
+import { CalendarEvent, CalendarType, EventConditionItem } from "../src/types";
 
 import './scss/examples.scss';
 
 let events: CalendarEvent[] = [
-    { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-11") },
-    { startDate: new Date("2021-11-05"), endDate: new Date("2021-11-07") },
-    { startDate: new Date("2021-11-07"), endDate: new Date("2021-11-14") },
-    { startDate: new Date("2021-06-30"), description: "Private" },
-    { startDate: new Date("2021-06-30"), description: "Private 2" }
+    { startDate: new Date("2021-12-05"), endDate: new Date("2021-12-11") },
+    { startDate: new Date("2021-12-05"), endDate: new Date("2021-12-07") },
+    { startDate: new Date("2021-12-07"), endDate: new Date("2021-12-14") },
+    { startDate: new Date("2022-06-30"), description: "Private" },
+    { startDate: new Date("2022-06-30"), description: "Private 2" }
 ];
 
 const eventConditions: EventConditionItem[] = [

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { CalendarDayData } from "./ContentEventlistFormatter";
 import { isNumberInRange } from "../logic/helper";
 import { CalendarEvent, EventConditionItem } from "../types";
@@ -12,8 +12,8 @@ export interface CalendarDayProps extends CalendarDayContent {
 }
 
 export interface CalendarDayContent {
-    calendarDayContent?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
-    calendarDayTemplate?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
+    calendarDayContent?: FunctionComponent<CalendarDayData>;
+    calendarDayTemplate?: FunctionComponent<CalendarDayData>;
 }
 
 export const CalendarDay = (props: CalendarDayProps) => {

@@ -9,12 +9,12 @@ export interface CalendarDayProps extends CalendarDayContent {
     active: boolean;
     eventsOfDay: CalendarEvent[];
     eventConditions?: EventConditionItem[];
+    onCalendarDayClicked: (calendarDayData: CalendarDayData) => void;
 }
 
 export interface CalendarDayContent {
     calendarDayContent?: FunctionComponent<CalendarDayData>;
     calendarDayTemplate?: FunctionComponent<CalendarDayData>;
-    onCalendarDayClicked?: (calendarDayData: CalendarDayData) => void;
 }
 
 export const CalendarDay = (props: CalendarDayProps) => {

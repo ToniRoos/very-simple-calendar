@@ -12,6 +12,7 @@ export interface CalendarData {
     startDate?: Date;
     events: CalendarEvent[];
     eventConditions?: EventConditionItem[];
+    onClicked?: (calendarDayData: Omit<CalendarDayProps, 'onCalendarDayClicked'>) => void;
     options?: CalendarDataOptions;
 }
 
@@ -44,7 +45,8 @@ const CalendarItem: FunctionComponent<CalendarData> = (props) => {
             eventsOfDay: eventsOfDay,
             eventConditions: props.eventConditions,
             active: tmpDate.getMonth() === startDate.getMonth(),
-            calendarDayContent: props.options?.calendarDayContent
+            calendarDayContent: props.options?.calendarDayContent,
+            onCalendarDayClicked: props.onClicked
         };
 
         calDays.push(calItem);

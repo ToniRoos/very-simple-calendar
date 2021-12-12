@@ -1,7 +1,7 @@
 import React from "react";
 import { CalendarDayProps } from "./CalendarDay";
 
-export type CalendarDayData = Omit<CalendarDayProps, "calendarDayContent">;
+export type CalendarDayData = Omit<CalendarDayProps, "calendarDayContent" | "calendarDayTemplate">;
 
 const EventlistFormatter = ((data: CalendarDayData) => {
 

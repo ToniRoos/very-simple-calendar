@@ -13,6 +13,7 @@ export interface CalendarDayProps extends CalendarDayContent {
 
 export interface CalendarDayContent {
     calendarDayContent?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
+    calendarDayTemplate?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
 }
 
 export const CalendarDay = (props: CalendarDayProps) => {
@@ -38,10 +39,12 @@ export const CalendarDay = (props: CalendarDayProps) => {
 
     return (
         <CalenderDayContainer title={description}>
-            <div className={`calendar calendar-item ${activeClassName} ${classNameBusy} ${classNameBrushed}`}>
-                {props.day.getDate()}
-                {props.calendarDayContent ? props.calendarDayContent(props) : undefined}
-            </div>
+            {props.calendarDayTemplate
+                ? props.calendarDayTemplate(props)
+                : <div className={`calendar calendar-item ${activeClassName} ${classNameBusy} ${classNameBrushed}`}>
+                    {props.day.getDate()}
+                    {props.calendarDayContent ? props.calendarDayContent(props) : undefined}
+                </div>}
         </CalenderDayContainer>
     );
 };

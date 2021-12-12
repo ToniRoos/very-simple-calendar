@@ -1,14 +1,18 @@
-import React from "react";
+import React, { Fragment, FunctionComponent } from "react";
 import { CalendarDayProps } from "./CalendarDay";
 
 export type CalendarDayData = Omit<CalendarDayProps, "calendarDayContent" | "calendarDayTemplate">;
 
-const EventlistFormatter = ((data: CalendarDayData) => {
+const EventlistFormatter: FunctionComponent<CalendarDayData> = (({ eventsOfDay, day }) => {
 
-    let descriptionList = data.eventsOfDay.filter(event => event.description).map(event => event.description);
-    const descriptionListMapped = descriptionList.map((des, index) => <div key={data.day.getTime() + index} className="calendar-event ">{des}</div>);
+    let descriptionList = eventsOfDay.filter(event => event.description).map(event => event.description);
+    const descriptionListMapped = descriptionList.map((des, index) => <div key={day.getTime() + index} className="calendar-event ">{des}</div>);
 
-    return descriptionListMapped;
+    return (
+        <Fragment>
+            {descriptionListMapped}
+        </Fragment>
+    );
 });
 
 export { EventlistFormatter };

@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import { FunctionComponent } from "react";
 import { CalendarDayData } from "./ContentEventlistFormatter";
 import { CalendarEvent, EventConditionItem } from "../types";
 export interface CalendarDayProps extends CalendarDayContent {
@@ -8,7 +8,7 @@ export interface CalendarDayProps extends CalendarDayContent {
     eventConditions?: EventConditionItem[];
 }
 export interface CalendarDayContent {
-    calendarDayContent?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
-    calendarDayTemplate?: (calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[];
+    calendarDayContent?: FunctionComponent<CalendarDayData>;
+    calendarDayTemplate?: FunctionComponent<CalendarDayData>;
 }
 export declare const CalendarDay: (props: CalendarDayProps) => JSX.Element;

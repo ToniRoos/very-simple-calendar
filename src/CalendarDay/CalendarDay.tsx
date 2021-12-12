@@ -14,6 +14,7 @@ export interface CalendarDayProps extends CalendarDayContent {
 export interface CalendarDayContent {
     calendarDayContent?: FunctionComponent<CalendarDayData>;
     calendarDayTemplate?: FunctionComponent<CalendarDayData>;
+    onCalendarDayClicked?: (calendarDayData: CalendarDayData) => void;
 }
 
 export const CalendarDay = (props: CalendarDayProps) => {
@@ -38,7 +39,11 @@ export const CalendarDay = (props: CalendarDayProps) => {
     const classNameBusy = occupiedCountsPerDay > 0 ? "calendar-item-busy" : "";
 
     return (
-        <CalenderDayContainer title={description}>
+        <CalenderDayContainer title={description} onClick={() => {
+            if (props.onCalendarDayClicked) {
+                props.onCalendarDayClicked(props);
+            }
+        }}>
             {props.calendarDayTemplate
                 ? props.calendarDayTemplate(props)
                 : <div className={`calendar calendar-item ${activeClassName} ${classNameBusy} ${classNameBrushed}`}>

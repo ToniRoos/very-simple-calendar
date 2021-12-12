@@ -10,5 +10,6 @@ export interface CalendarDayProps extends CalendarDayContent {
 export interface CalendarDayContent {
     calendarDayContent?: FunctionComponent<CalendarDayData>;
     calendarDayTemplate?: FunctionComponent<CalendarDayData>;
+    onCalendarDayClicked?: (calendarDayData: CalendarDayData) => void;
 }
 export declare const CalendarDay: (props: CalendarDayProps) => JSX.Element;

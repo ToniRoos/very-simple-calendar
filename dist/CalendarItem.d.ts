@@ -5,8 +5,9 @@ export interface CalendarData {
     startDate?: Date;
     events: CalendarEvent[];
     eventConditions?: EventConditionItem[];
-    onClicked?: (calendarDayData: Omit<CalendarDayProps, 'onCalendarDayClicked'>) => void;
+    onClicked?: (calendarDayData: CalendarDayClickedData) => void;
     options?: CalendarDataOptions;
 }
+export declare type CalendarDayClickedData = Omit<CalendarDayProps, 'onCalendarDayClicked'>;
 declare const CalendarItem: FunctionComponent<CalendarData>;
 export { CalendarItem };

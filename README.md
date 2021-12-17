@@ -11,7 +11,9 @@ No matter if small...
 
 ## Install
 
-...
+```sh
+npm i git+https://github.com/ToniRoos/very-simple-calendar.git
+```
 
 ## Run examples
 

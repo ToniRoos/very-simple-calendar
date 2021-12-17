@@ -7,7 +7,7 @@ interface CalenderDayContainerProps {
 
 const CalenderDayContainer: FunctionComponent<CalenderDayContainerProps> = ({ children, title, onClick }) => {
     return (
-        <td title={title} onClick={() => onClick}>
+        <td title={title} onClick={onClick}>
             {children}
         </td>
     );

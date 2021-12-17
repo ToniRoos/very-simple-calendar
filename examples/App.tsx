@@ -48,6 +48,9 @@ export const App = () => {
         <Calendar events={events} options={{
             shiftWeekStartDay: -1,
             type: CalendarType.big
-        }} />
+        }}
+            onClicked={({ day }) => {
+                console.log("Foo", day)
+            }} />
     </div>
 }

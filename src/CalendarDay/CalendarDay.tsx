@@ -1,14 +1,13 @@
 import React, { FunctionComponent } from "react";
 import { CalendarDayData } from "./ContentEventlistFormatter";
-import { isNumberInRange } from "../logic/helper";
-import { CalendarEvent, EventConditionItem } from "../types";
+import { CalendarEvent, EventConditionParser } from "../types";
 import { CalenderDayContainer } from "./CalendarDayContainer";
 
 export interface CalendarDayProps extends CalendarDayContent {
     day: Date;
     active: boolean;
     eventsOfDay: CalendarEvent[];
-    eventConditions?: EventConditionItem[];
+    eventConditions?: EventConditionParser;
     onCalendarDayClicked: (calendarDayData: CalendarDayData) => void;
 }
 
@@ -26,13 +25,14 @@ export const CalendarDay = (props: CalendarDayProps) => {
     let classNameBrushed = "";
 
     if (props.eventConditions) {
-        const filteredStates = props.eventConditions.filter(item => isNumberInRange(item.range, occupiedCountsPerDay));
-        const eventCondition = filteredStates.length === 0 ? props.eventConditions[occupiedCountsPerDay] : filteredStates[0];
 
-        if (eventCondition.description) {
-            description = eventCondition.description;
+        const calendarDayDescriptor = props.eventConditions.validateEventsOfDay(props.day, props.eventsOfDay);
+        if (calendarDayDescriptor) {
+            if (calendarDayDescriptor.description) {
+                description = calendarDayDescriptor.description;
+            }
+            classNameBrushed = calendarDayDescriptor.className;
         }
-        classNameBrushed = eventCondition.className;
     }
 
     const activeClassName = props.active ? 'calendar-item-active' : 'calendar-item-inactive';

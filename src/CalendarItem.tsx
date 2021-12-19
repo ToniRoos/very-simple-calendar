@@ -4,14 +4,14 @@ import { CalendarHeader } from "./CalendarHeader";
 import { CalendarWeek } from "./CalendarWeek/CalendarWeek";
 import { defaultMonthNames } from "./defaultMonthNames";
 import { isDateInRange } from "./logic/helper";
-import { CalendarDataOptions, CalendarEvent, EventConditionItem } from "./types";
+import { CalendarDataOptions, CalendarEvent, EventConditionParser } from "./types";
 
 const dayInMilliSeconds = 1000 * 60 * 60 * 24;
 
 export interface CalendarData {
     startDate?: Date;
     events: CalendarEvent[];
-    eventConditions?: EventConditionItem[];
+    eventConditionParser?: EventConditionParser;
     onClicked?: (calendarDayData: CalendarDayClickedData) => void;
     options?: CalendarDataOptions;
 }
@@ -45,7 +45,7 @@ const CalendarItem: FunctionComponent<CalendarData> = (props) => {
         let calItem: CalendarDayProps = {
             day: tmpDate,
             eventsOfDay: eventsOfDay,
-            eventConditions: props.eventConditions,
+            eventConditions: props.eventConditionParser,
             active: tmpDate.getMonth() === startDate.getMonth(),
             calendarDayContent: props.options?.calendarDayContent,
             onCalendarDayClicked: props.onClicked

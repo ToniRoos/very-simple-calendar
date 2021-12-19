@@ -18,6 +18,5 @@ const isNumberInRange = (range: NumberRange, number: number) => {
 }
 
 export {
-    isDateInRange,
-    isNumberInRange
+    isDateInRange
 }

@@ -23,10 +23,10 @@ export interface NumberRange {
     start: number;
     end: number;
 }
-export interface CalendarDayPropsExtension {
+export interface CalendarDayDescriptor {
     description?: string;
     className: string;
 }
-export interface EventConditionItem extends CalendarDayPropsExtension {
-    range: NumberRange;
+export interface EventConditionParser {
+    validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor | undefined;
 }

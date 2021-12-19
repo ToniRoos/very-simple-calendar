@@ -1,4 +1,4 @@
-import { CalendarDayContent, CalendarDayProps } from "../CalendarDay/CalendarDay";
+import { CalendarDayContent } from "../CalendarDay/CalendarDay";
 import { CalendarHeaderData } from "../CalendarHeader";
 export interface DateRange {
     startDate: Date;
@@ -9,7 +9,6 @@ export interface CalendarEvent extends DateRange {
     description?: string;
     id?: string;
 }
-
 
 export const enum CalendarType {
     small,
@@ -29,11 +28,11 @@ export interface NumberRange {
     end: number;
 }
 
-export interface CalendarDayPropsExtension {
+export interface CalendarDayDescriptor {
     description?: string;
     className: string;
 }
 
-export interface EventConditionItem extends CalendarDayPropsExtension {
-    range: NumberRange;
+export interface EventConditionParser {
+    validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor | undefined;
 }

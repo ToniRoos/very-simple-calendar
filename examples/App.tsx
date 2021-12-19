@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Calendar } from "../src/Calendar";
-import { CalendarEvent, CalendarType, EventConditionItem } from "../src/types";
+import { CalendarEvent, CalendarType, EventConditionParser } from "../src/types";
 
 import './scss/examples.scss';
 
@@ -13,23 +13,26 @@ let events: CalendarEvent[] = [
     { startDate: new Date("2022-06-30"), description: "Private 2" }
 ];
 
-const eventConditions: EventConditionItem[] = [
-    {
-        range: { start: 0, end: 0 },
-        className: "events-0",
-        description: "nothing to do"
-    },
-    {
-        range: { start: 1, end: 1 },
-        className: "events-1",
-        description: "busy"
-    },
-    {
-        range: { start: 2, end: 3 },
-        className: "events-2",
-        description: "very busy"
-    }];
+const eventConditionParser: EventConditionParser = {
+    validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => {
 
+        const occupiedCountsPerDay = eventsOfDay.length;
+        let className = "events-0";
+        let description = "nothing to do";
+        if (occupiedCountsPerDay === 1) {
+            className = "events-1";
+            description = "busy";
+        }
+        if (occupiedCountsPerDay > 1) {
+            className = "events-2";
+            description = "very busy";
+        }
+        return {
+            className: className,
+            description: description
+        };
+    }
+};
 
 export const App = () => {
 
@@ -40,7 +43,7 @@ export const App = () => {
         <div className="example-seperator" />
 
         <h1>Very simple example 2 - small calendar using event conditions</h1>
-        <Calendar events={events} eventConditions={eventConditions} options={{ numberCalendarsToShow: 2 }} />
+        <Calendar events={events} eventConditionParser={eventConditionParser} options={{ numberCalendarsToShow: 2 }} />
 
         <div className="example-seperator" />
 

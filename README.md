@@ -70,7 +70,7 @@ export const App = () => {
 export const App = () => {
 
     return <div>
-        <Calendar startDate={...} events={...} options={...} eventConditions={...} />
+        <Calendar startDate={...} events={...} options={...} eventConditionParser={...} />
     </div>
 }
 ```
@@ -87,18 +87,18 @@ export const App = () => {
     - ```id?```: ```string``` (can be used to identify events, for example to group events)
 
 ```options?```: ```CalendarDataOptions``` (display options)
- - ```monthNames?```: ```string[]``` (default: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
- - ```weekDayNames?```: ```string[]``` (default: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+ - ```monthNames?```: ```string[]``` (default: ["January", "February", ..., "December"])
+ - ```weekDayNames?```: ```string[]``` (default: ['Mon', 'Tue', ..., 'Sun'])
  - ```shiftWeekStartDay?```: ```number``` (default: 0 => means starting week on monday, use -1 to start week on sunday)
  - ```numberCalendarsToShow?```: ```number``` (number of pages to show)
  - ```type?```: ```CalendarType``` (small | big)
 
+```eventConditionParser?``` (define the style of a week day cell by giving you the events of the day)
+ -  validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor
+
 ### Advanced API
 
 ```options?```: ```CalendarDataOptions``` (display options)
- - ```calendarDayContent?```: ```(calenderDayProps: CalendarDayData) => JSX.Element | JSX.Element[]``` (create your custom week day content)
-    - ```CalendarDayData```: (for current day while rendering)
-        - ```day```: ```Date```
-        - ```active```: ```boolean``` (is true, when month is displayed at the moment)
-        - ```eventsOfDay```: ```CalendarEvent[]``` (list of events for current date)
-        - ```eventConditions```?:``` EventConditionItem[]``` (event conditions can be used for formatting week day cells, depending on the number of events per day)
+ - ```calendarDayContent?```: ```({ day: Date, active: boolean, eventsOfDay: CalendarEvents[], eventConditionParser: EventConditionParser}) => JSX.Element | JSX.Element[]``` (create your custom week day content)
+ ```options?```: ```CalendarDataOptions``` (display options)
+ - ```calendarDayTemplate?```: ```({ day: Date, active: boolean, eventsOfDay: CalendarEvents[], eventConditionParser: EventConditionParser}) => JSX.Element | JSX.Element[]``` (create your custom week day template)

@@ -14,7 +14,7 @@ let events: CalendarEvent[] = [
 ];
 
 const eventConditionParser: EventConditionParser = {
-    validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => {
+    validateEventsOfDay: (active: boolean, date: Date, eventsOfDay: CalendarEvent[]) => {
 
         const occupiedCountsPerDay = eventsOfDay.length;
         let className = "events-0";

@@ -94,7 +94,7 @@ export const App = () => {
  - ```type?```: ```CalendarType``` (small | big)
 
 ```eventConditionParser?``` (define the style of a week day cell by giving you the events of the day)
- -  validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor
+ -  validateEventsOfDay: (active: boolean, day: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor
 
 ### Advanced API
 

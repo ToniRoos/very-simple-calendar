@@ -28,5 +28,5 @@ export interface CalendarDayDescriptor {
     className: string;
 }
 export interface EventConditionParser {
-    validateEventsOfDay: (date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor | undefined;
+    validateEventsOfDay: (active: boolean, date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor | undefined;
 }

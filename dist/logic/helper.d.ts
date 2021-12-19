@@ -1,4 +1,3 @@
-import { DateRange, NumberRange } from "../types";
+import { DateRange } from "../types";
 declare const isDateInRange: (range: DateRange, date: Date) => boolean;
-declare const isNumberInRange: (range: NumberRange, number: number) => boolean;
-export { isDateInRange, isNumberInRange };
+export { isDateInRange };

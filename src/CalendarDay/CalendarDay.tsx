@@ -26,7 +26,7 @@ export const CalendarDay = (props: CalendarDayProps) => {
 
     if (props.eventConditions) {
 
-        const calendarDayDescriptor = props.eventConditions.validateEventsOfDay(props.day, props.eventsOfDay);
+        const calendarDayDescriptor = props.eventConditions.validateEventsOfDay(props.active, props.day, props.eventsOfDay);
         if (calendarDayDescriptor) {
             if (calendarDayDescriptor.description) {
                 description = calendarDayDescriptor.description;

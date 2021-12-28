@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Calendar } from "../src/Calendar";
-import { CalendarEvent, CalendarType, EventConditionParser } from "../src/types";
+import { CalendarEvent, CalendarType, CalendarDayFormatter } from "../src/types";
 
 import './scss/examples.scss';
 
@@ -13,7 +13,7 @@ let events: CalendarEvent[] = [
     { startDate: new Date("2022-06-30"), description: "Private 2" }
 ];
 
-const eventConditionParser: EventConditionParser = {
+const eventConditionParser: CalendarDayFormatter = {
     validateEventsOfDay: (active: boolean, date: Date, eventsOfDay: CalendarEvent[]) => {
 
         const occupiedCountsPerDay = eventsOfDay.length;
@@ -43,7 +43,7 @@ export const App = () => {
         <div className="example-seperator" />
 
         <h1>Very simple example 2 - small calendar using event conditions</h1>
-        <Calendar events={events} eventConditionParser={eventConditionParser} options={{ numberCalendarsToShow: 2 }} />
+        <Calendar events={events} calendarDayFormatter={eventConditionParser} options={{ numberCalendarsToShow: 2 }} />
 
         <div className="example-seperator" />
 

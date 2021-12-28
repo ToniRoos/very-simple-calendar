@@ -1,11 +1,11 @@
 import { FunctionComponent } from "react";
 import { CalendarDayData } from "./ContentEventlistFormatter";
-import { CalendarEvent, EventConditionParser } from "../types";
+import { CalendarEvent, CalendarDayFormatter } from "../types";
 export interface CalendarDayProps extends CalendarDayContent {
     day: Date;
     active: boolean;
     eventsOfDay: CalendarEvent[];
-    eventConditions?: EventConditionParser;
+    eventConditions?: CalendarDayFormatter;
     onCalendarDayClicked: (calendarDayData: CalendarDayData) => void;
 }
 export interface CalendarDayContent {

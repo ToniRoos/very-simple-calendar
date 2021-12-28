@@ -33,6 +33,6 @@ export interface CalendarDayDescriptor {
     className: string;
 }
 
-export interface EventConditionParser {
+export interface CalendarDayFormatter {
     validateEventsOfDay: (active: boolean, date: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor | undefined;
 }

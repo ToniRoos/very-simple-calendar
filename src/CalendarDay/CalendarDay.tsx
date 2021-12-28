@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
 import { CalendarDayData } from "./ContentEventlistFormatter";
-import { CalendarEvent, EventConditionParser } from "../types";
+import { CalendarEvent, CalendarDayFormatter } from "../types";
 import { CalenderDayContainer } from "./CalendarDayContainer";
 
 export interface CalendarDayProps extends CalendarDayContent {
     day: Date;
     active: boolean;
     eventsOfDay: CalendarEvent[];
-    eventConditions?: EventConditionParser;
+    eventConditions?: CalendarDayFormatter;
     onCalendarDayClicked: (calendarDayData: CalendarDayData) => void;
 }
 
@@ -23,6 +23,8 @@ export const CalendarDay = (props: CalendarDayProps) => {
     let descriptionList = props.eventsOfDay.filter(event => event.description).map(event => event.description);
     let description = descriptionList.join("\n");
     let classNameBrushed = "";
+    let classNameBusy = "";
+    const activeClassName = props.active ? 'calendar-item-active' : 'calendar-item-inactive';
 
     if (props.eventConditions) {
 
@@ -33,10 +35,11 @@ export const CalendarDay = (props: CalendarDayProps) => {
             }
             classNameBrushed = calendarDayDescriptor.className;
         }
+    } else {
+        if (occupiedCountsPerDay > 0) {
+            classNameBusy = "calendar-item-busy";
+        }
     }
-
-    const activeClassName = props.active ? 'calendar-item-active' : 'calendar-item-inactive';
-    const classNameBusy = occupiedCountsPerDay > 0 ? "calendar-item-busy" : "";
 
     return (
         <CalenderDayContainer title={description} onClick={() => {

@@ -93,12 +93,12 @@ export const App = () => {
  - ```numberCalendarsToShow?```: ```number``` (number of pages to show)
  - ```type?```: ```CalendarType``` (small | big)
 
-```eventConditionParser?``` (define the style of a week day cell by giving you the events of the day)
+```calendarDayFormatter?``` (define the style of a week day cell by giving you the events of the day)
  -  validateEventsOfDay: (active: boolean, day: Date, eventsOfDay: CalendarEvent[]) => CalendarDayDescriptor
 
 ### Advanced API
 
 ```options?```: ```CalendarDataOptions``` (display options)
- - ```calendarDayContent?```: ```({ day: Date, active: boolean, eventsOfDay: CalendarEvents[], eventConditionParser: EventConditionParser}) => JSX.Element | JSX.Element[]``` (create your custom week day content)
+ - ```calendarDayContent?```: ```({ day: Date, active: boolean, eventsOfDay: CalendarEvents[], calendarDayFormatter: CalendarDayFormatter}) => JSX.Element | JSX.Element[]``` (create your custom week day content)
  ```options?```: ```CalendarDataOptions``` (display options)
- - ```calendarDayTemplate?```: ```({ day: Date, active: boolean, eventsOfDay: CalendarEvents[], eventConditionParser: EventConditionParser}) => JSX.Element | JSX.Element[]``` (create your custom week day template)
+ - ```calendarDayTemplate?```: ```({ day: Date, active: boolean, eventsOfDay: CalendarEvents[], calendarDayFormatter: CalendarDayFormatter}) => JSX.Element | JSX.Element[]``` (create your custom week day template)

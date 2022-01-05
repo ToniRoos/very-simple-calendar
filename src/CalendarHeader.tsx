@@ -8,7 +8,7 @@ export interface CalendarHeaderData {
 
 const CalendarHeader = (props: CalendarHeaderData) => {
 
-    const headerData = props.weekDayNames ? props.weekDayNames : defaultWeekDayNames();
+    const headerData = props.weekDayNames ? [...props.weekDayNames] : defaultWeekDayNames();
 
     for (let index = 0; index <= props.shiftWeekStartDay; index++) {
         const firstWeekDayName = headerData.shift();
